@@ -1,7 +1,7 @@
 package hw4;
 
-import hw3.Employee;
-import hw3.Holidays;
+import java.util.Calendar;
+import java.util.Scanner;
 
 /**
  * В класс покупателя добавить перечисление с гендерами,
@@ -23,32 +23,34 @@ public class Main {
         Buyer irina = new Buyer("Красавина", Gender.FEMALE);
 
         Buyer[] buyers = {sergey, natalia, ivan, viktoria, maksim, olga, aleksey, irina};
-        for (Holidays holidays : Holidays.values()) {
-            System.out.println(System.lineSeparator()); // разделитель для удобства чтения
-            System.out.println(holidays);  // объявление праздника
+        Calendar calendar = Calendar.getInstance();
+        String date = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        String month = Integer.toString(calendar.get(Calendar.MONTH));
+        String s = date + "." + month;
+//        Scanner scanner = new Scanner("Введите число в формате дата.месяц: ");
+//        String s = scanner.nextLine();
 
-            if (holidays == Holidays.NewYear) {
-                for (Buyer buyer : buyers) {
-                    System.out.println(buyer.name + " С новым годом!");
-                }
-            } else if (holidays == Holidays.February23) {
-                for (Buyer buyer : buyers) {
-                    if (buyer.gender == Gender.MALE) {
-                        System.out.println(buyer.name + " C 23 февраля");
-                    }
-                }
-            } else if (holidays == Holidays.March8) {
-                for (Buyer buyer : buyers) {
-                    if (buyer.gender == Gender.FEMALE) {
-                        System.out.println(buyer.name + " C 8 марта");
-                    }
+        if (s.equals("01.01")) {
+            for (Buyer buyer : buyers) {
+                System.out.println(buyer.name + " С новым годом!");
+            }
+        } else if (s.equals("23.02")) {
+            for (Buyer buyer : buyers) {
+                if (buyer.gender == Gender.MALE) {
+                    System.out.println(buyer.name + " C 23 февраля");
                 }
             }
-            else {
-                System.out.println("Сейчас нет праздника");
+        } else if (s.equals("08.03")) {
+            for (Buyer buyer : buyers) {
+                if (buyer.gender == Gender.FEMALE) {
+                    System.out.println(buyer.name + " C 8 марта");
+                }
             }
-
+        } else {
+            System.out.println("Сейчас нет праздника");
         }
 
     }
+
 }
+

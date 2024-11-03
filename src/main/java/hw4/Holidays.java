@@ -1,4 +1,4 @@
-package hw3;
+package hw4;
 
 public enum Holidays {
     thereIsNoHoliday, NewYear, March8, February23
